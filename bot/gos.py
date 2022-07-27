@@ -22,7 +22,7 @@ stk = "@zhenya_bruna(СтК)"
 cb = "@zhenya_bruna(ЦБ)"
 lspd = "@zhenya_bruna(ЛСПД)"
 sfpd = "@zhenya_bruna(СФПД)"
-swat = "@zhenya_bruna(ЛВПД)"
+swat = "@zhenya_bruna(СВАТ)"
 rcsd = "@zhenya_bruna(РКШД)"
 fbi = "@zhenya_bruna(ФБР)"
 lsmc = "@zhenya_bruna(ЛСМЦ)"
@@ -560,6 +560,111 @@ while True:
                                 sender("Какое сообщение вы хотите отправить?", id, getKeyboardByStatus())
                             elif msg == "обратно":
                                 status = "menu co"
+                                sender("Возращаемся назад!", id, getKeyboardByStatus())
+                        elif status == "menu lspd":
+                            if msg == "выдача преда":
+                                status = "pred lspd"
+                                sender("Идем давать пред ЛСПД", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За...)", id, getKeyboardByStatus())
+                            elif msg == "выдача выговора":
+                                status = "vig lspd"
+                                sender("Идем давать выговор ЛСПД", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За ...)", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы":
+                                chat_sender(lspd + ", 120 минут на поднятие нормы онлайна. По истечении срока скриншот попыток или /members следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы дискорда":
+                                chat_sender(lspd + ", 120 минут на поднятие нормы онлайна в дискорде. По истечении срока скриншот попыток или дискорд канала следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "сообщение в орг. беседу":
+                                status = "msg lspd"
+                                sender("Какое сообщение вы хотите отправить?", id, getKeyboardByStatus())
+                            elif msg == "обратно":
+                                status = "menu justice"
+                                sender("Возращаемся назад!", id, getKeyboardByStatus())
+                        elif status == "menu sfpd":
+                            if msg == "выдача преда":
+                                status = "pred sfpd"
+                                sender("Идем давать пред СФПД", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За...)", id, getKeyboardByStatus())
+                            elif msg == "выдача выговора":
+                                status = "vig sfpd"
+                                sender("Идем давать выговор СФПД", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За ...)", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы":
+                                chat_sender(sfpd + ", 120 минут на поднятие нормы онлайна. По истечении срока скриншот попыток или /members следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы дискорда":
+                                chat_sender(sfpd + ", 120 минут на поднятие нормы онлайна в дискорде. По истечении срока скриншот попыток или дискорд канала следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "сообщение в орг. беседу":
+                                status = "msg sfpd"
+                                sender("Какое сообщение вы хотите отправить?", id, getKeyboardByStatus())
+                            elif msg == "обратно":
+                                status = "menu justice"
+                                sender("Возращаемся назад!", id, getKeyboardByStatus())
+                        elif status == "menu rcsd":
+                            if msg == "выдача преда":
+                                status = "pred rscd"
+                                sender("Идем давать пред РКШД", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За...)", id, getKeyboardByStatus())
+                            elif msg == "выдача выговора":
+                                status = "vig rcsd"
+                                sender("Идем давать выговор РКШД", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За ...)", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы":
+                                chat_sender(rcsd + ", 120 минут на поднятие нормы онлайна. По истечении срока скриншот попыток или /members следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы дискорда":
+                                chat_sender(rcsd + ", 120 минут на поднятие нормы онлайна в дискорде. По истечении срока скриншот попыток или дискорд канала следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "сообщение в орг. беседу":
+                                status = "msg rcsd"
+                                sender("Какое сообщение вы хотите отправить?", id, getKeyboardByStatus())
+                            elif msg == "обратно":
+                                status = "menu justice"
+                                sender("Возращаемся назад!", id, getKeyboardByStatus())
+                        elif status == "menu swat":
+                            if msg == "выдача преда":
+                                status = "pred swat"
+                                sender("Идем давать пред СВАТ", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За...)", id, getKeyboardByStatus())
+                            elif msg == "выдача выговора":
+                                status = "vig swat"
+                                sender("Идем давать выговор СВАТ", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За ...)", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы":
+                                chat_sender(swat + ", 120 минут на поднятие нормы онлайна. По истечении срока скриншот попыток или /members следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы дискорда":
+                                chat_sender(swat + ", 120 минут на поднятие нормы онлайна в дискорде. По истечении срока скриншот попыток или дискорд канала следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "сообщение в орг. беседу":
+                                status = "msg swat"
+                                sender("Какое сообщение вы хотите отправить?", id, getKeyboardByStatus())
+                            elif msg == "обратно":
+                                status = "menu justice"
+                                sender("Возращаемся назад!", id, getKeyboardByStatus())
+                        elif status == "menu fbi":
+                            if msg == "выдача преда":
+                                status = "pred fbi"
+                                sender("Идем давать пред ФБР", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За...)", id, getKeyboardByStatus())
+                            elif msg == "выдача выговора":
+                                status = "vig fbi"
+                                sender("Идем давать выговор ФБР", id, getKeyboardByStatus())
+                                sender("За что вы хотите дать наказание?(За ...)", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы":
+                                chat_sender(fbi + ", 120 минут на поднятие нормы онлайна. По истечении срока скриншот попыток или /members следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "выдача нормы дискорда":
+                                chat_sender(fbi + ", 120 минут на поднятие нормы онлайна в дискорде. По истечении срока скриншот попыток или дискорд канала следящим в ЛС",1)
+                                sender("Выдал норму!", id, getKeyboardByStatus())
+                            elif msg == "сообщение в орг. беседу":
+                                status = "msg fbi"
+                                sender("Какое сообщение вы хотите отправить?", id, getKeyboardByStatus())
+                            elif msg == "обратно":
+                                status = "menu justice"
                                 sender("Возращаемся назад!", id, getKeyboardByStatus())
                     else:
                         send_noaccess_message(id, False)
