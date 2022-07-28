@@ -12,7 +12,7 @@ longpoll = VkBotLongPoll(vk_session, bot_id)
 status = "main"
 
 gsv = "@zhenya_bruna(ГСВ)"
-gkv = "@zhenya_bruna(ГКВ)"
+gcv = "@zhenya_bruna(ГКВ)"
 st = "@zhenya_bruna(СТ)"
 judge = "@zhenya_bruna(Судья)"
 gp = "@zhenya_bruna(ГП)"
@@ -267,13 +267,71 @@ def getKeyboardByStatus():
         return getMediaKeyboard()
     elif check_status(status):
         return getOrgKeyboard()
+    elif status == "pred government":
+        return getGovernmentPredsKeyboard()
+    elif status == "vig government":
+        return getGovernmentVigsKeyboard()
     elif status.startswith("pred") or status.startswith("vig"):
         return getPunishKeyboard()
-    elif status == "government preds":
-        return getGovernmentPredsKeyboard()
-    elif status == "government vigs":
-        return getGovernmentVigsKeyboard()
 
+def makePunish(in_status, isPred, msg, id):
+    target = getTarget(in_status)
+    if isPred:
+        chat_sender(target + ", +предупреждение за " + msg, 1)
+    else:
+        chat_sender(target + ", +выговор за " + msg, 1)
+
+
+
+def getTarget(status):
+    target = ""
+    if "gcv" in status:
+        target = gcv
+    elif "gsv" in status:
+        target = gsv
+    elif "stk" in status:
+        target = stk
+    elif "judge" in status:
+        target = judge
+    elif "guber" in status:
+        target = guber
+    elif "gp" in status:
+        target = gp
+    elif "gcl" in status:
+        target = gcl
+    elif "st" in status:
+        target = st
+    elif "cb" in status:
+        target = cb
+    elif "lspd" in status:
+        target = lspd
+    elif "sfpd" in status:
+        target = sfpd
+    elif "swat" in status:
+        target = swat
+    elif "rcsd" in status:
+        target = rcsd
+    elif "fbi" in status:
+        target = fbi
+    elif "lsmc" in status:
+        target = lsmc
+    elif "sfmc" in status:
+        target = sfmc
+    elif "lvmc" in status:
+        target = lvmc
+    elif "lsa" in status:
+        target = lsa
+    elif "sfa" in status:
+        target = sfa
+    elif "msp" in status:
+        target = msp
+    elif "rls" in status:
+        target = rls
+    elif "rsf" in status:
+        target = rsf
+    elif "rlv" in status:
+        target = rlv
+    return target
 
 while True:
     try:
@@ -349,10 +407,10 @@ while True:
                                 chat_sender("@all, В ИГРУ!", 1)
                                 sender("Позвал", id, getKeyboardByStatus())
                             elif msg == "меню предов":
-                                status = "government preds"
+                                status = "pred government"
                                 sender("Перехожу в меню предов", id, getKeyboardByStatus())
                             elif msg == "меню выговоров":
-                                status = "government vigs"
+                                status = "vig government"
                                 sender("Перехожу в меню выговоров", id, getKeyboardByStatus())
                         elif status == "menu co":
                             if msg == "меню гцл":
@@ -440,7 +498,7 @@ while True:
                             elif msg == "позвать всех в игру!":
                                 chat_sender("@all, В ИГРУ!", 1)
                                 sender("Позвал", id, getKeyboardByStatus())
-                        elif status == "government preds":
+                        elif status == "pred government":
                             if msg == "пред гсв":
                                 status = "pred gsv"
                                 sender("Идем давать пред ГСВ", id, getKeyboardByStatus())
@@ -469,7 +527,7 @@ while True:
                                 status = "menu government"
                                 sender("Возращаемся назад!", id, getKeyboardByStatus())
                                 sender("За что вы хотите дать наказание?(За ...)", id, getKeyboardByStatus())
-                        elif status == "government vigs":
+                        elif status == "vig government":
                             if msg == "выговор гсв":
                                 status = "vig gsv"
                                 sender("Идем давать выговор ГСВ", id, getKeyboardByStatus())
@@ -605,7 +663,7 @@ while True:
                                 sender("Возращаемся назад!", id, getKeyboardByStatus())
                         elif status == "menu rcsd":
                             if msg == "выдача преда":
-                                status = "pred rscd"
+                                status = "pred rcsd"
                                 sender("Идем давать пред РКШД", id, getKeyboardByStatus())
                                 sender("За что вы хотите дать наказание?(За...)", id, getKeyboardByStatus())
                             elif msg == "выдача выговора":
@@ -854,6 +912,30 @@ while True:
                                 sender("Какое сообщение вы хотите отправить?", id, getKeyboardByStatus())
                             elif msg == "обратно":
                                 status = "menu media"
+                                sender("Возращаемся назад!", id, getKeyboardByStatus())
+                        elif "pred" in status:
+                            if msg != "обратно":
+                                makePunish(status, True, msg, id)
+                                status = status.replace("pred", "menu").replace("gcv", "government").replace("gsv", "government").replace("judge", "government").replace("guber", "government").replace("gp", "government")
+                                if not ("stk" in status) and "st" in status:
+                                    status = status.replace("st", "government")
+                                sender("Выдано!", id, getKeyboardByStatus())
+                            else:
+                                status = status.replace("pred", "menu").replace("gcv", "government").replace("gsv", "government").replace("judge", "government").replace("guber", "government").replace("gp", "government")
+                                if not ("stk" in status) and "st" in status:
+                                    status = status.replace("st", "government")
+                                sender("Возращаемся назад!", id, getKeyboardByStatus())
+                        elif "vig" in status:
+                            if msg != "обратно":
+                                makePunish(status, False, msg, id)
+                                status = status.replace("vig", "menu").replace("gcv", "government").replace("gsv", "government").replace("judge", "government").replace("guber", "government").replace("gp", "government")
+                                if not ("stk" in status) and "st" in status:
+                                    status = status.replace("st", "government")
+                                sender("Выдано!", id, getKeyboardByStatus())
+                            else:
+                                status = status.replace("vig", "menu").replace("gcv", "government").replace("gsv", "government").replace("judge", "government").replace("guber", "government").replace("gp", "government")
+                                if not ("stk" in status) and "st" in status:
+                                    status = status.replace("st", "government")
                                 sender("Возращаемся назад!", id, getKeyboardByStatus())
                     else:
                         send_noaccess_message(id, False)
