@@ -334,6 +334,9 @@ def getTarget(status):
         target = rlv
     return target
 
+def saveVariables():
+    text = "Вот тут твоя часть кода"
+
 while True:
     try:
         for event in longpoll.listen():
