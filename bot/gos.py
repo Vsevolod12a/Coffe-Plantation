@@ -337,6 +337,9 @@ def getTarget(status):
 def saveVariables():
     text = "Вот тут твоя часть кода"
 
+def loadVariables():
+    text = "Моя часть кода"
+
 while True:
     try:
         for event in longpoll.listen():
