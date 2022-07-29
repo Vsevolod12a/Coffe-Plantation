@@ -250,6 +250,7 @@ def getPunishKeyboard():
     keyboard.add_button("Обратно", VkKeyboardColor.PRIMARY)
     return keyboard
 
+
 def getKeyboardByStatus():
     if status == "main":
         return getMainKeyboard()
